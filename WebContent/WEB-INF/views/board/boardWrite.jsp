@@ -21,9 +21,6 @@
 			    data : param,
 			    success: function(data, textStatus, jqXHR)
 			    {
-					alert("작성완료");
-					
-					alert("메세지:"+data.success);
 					location.href = "/board/boardList.do?pageNo=1";
 			    },
 			    error: function (jqXHR, textStatus, errorThrown)

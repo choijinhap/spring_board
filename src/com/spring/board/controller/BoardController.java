@@ -58,7 +58,7 @@ public class BoardController {
 		List<BoardVo> boardList = new ArrayList<BoardVo>();
 		boardList=boardService.SelectBoardList(pageVo);
 		int totalCnt = boardService.selectPartBoardCnt(pageVo);
-		result.put("pageNo", "1");
+		result.put("pageNo", pageVo.getPageNo());
 		result.put("boardList", boardList);
 		result.put("totalCnt", totalCnt);
 		

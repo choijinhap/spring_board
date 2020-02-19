@@ -10,7 +10,7 @@
 <script type="text/javascript">
 
 	$j(document).ready(function(){
-		getList();
+		getList(1);
 		
 		$j("#ckall").on("click",function(){
 			if($j("#ckall").prop("checked")){
@@ -23,16 +23,15 @@
 		});
 		
 		$j("#checkSearch").on("click",function(){
-			getList();
+			getList(1);
 				
 		});
 	});
-	function getList(){
+	function getList(pageNo){
 		var $frm = $j(':input');
 		var param = $frm.serialize();
-		//location.href="/board/boardList.do?pageNo=1&"+param;
 		$j.ajax({
-		    url : "/board/boardListAjax.do?pageNo=1",
+		    url : "/board/boardListAjax.do?pageNo="+pageNo,
 		    dataType: "json",
 		    type: "GET",
 		    data : param,
@@ -65,7 +64,8 @@
 		    	}
 		    	
 	    		$j("#testTable").html(html);
-	    		$j("#pageNo").value(1);
+	    	
+	    		getPage(data.totalCnt);
 		    	
 		    },
 		    error: function (jqXHR, textStatus, errorThrown)
@@ -74,6 +74,20 @@
 		    }
 		});
 	}
+	
+	function getPage(count){
+		var pageNum=parseInt(count/10)+1;
+		var html="";
+		for(var i=1; i<=pageNum; i++){
+			html+="<a href='javascript:goPage("+i+")'>"+i +"</a>&nbsp";
+		}
+		$j("#pagingTab").html(html);
+	}
+	
+	function goPage(num){
+		getList(num);
+	}
+	
 	function doCheck(){
 		if($j("input[name=codeId]:checked").length==$j("input[name=codeId]").length){
 			$j("#ckall").prop("checked",true);
@@ -111,9 +125,8 @@
 		</td>
 	</tr>
 </table>
-<table id="pagingTab" align="center">
-	<input type="hidden" id="pageNo" value="${pageNo}" >
-</table>
+<div id="pagingTab" align="center">
+</div>
 	
 </body>
 </html>

@@ -21,8 +21,6 @@
 				    asynk: false,
 				    success: function(data, textStatus, jqXHR)
 				    {
-						alert("삭제완료");
-						alert("메세지:"+data.success);
 						location.href = "/board/boardList.do?pageNo=1";
 				    },
 				    error: function (jqXHR, textStatus, errorThrown)
