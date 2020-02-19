@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="user">
+    
+    <resultMap type="com.spring.user.vo.UserVo" id="userVo">
+    	<result property="userId" 	column="BOARD_TYPE"/>
+    	<result property="userPw" 	column="BOARD_NUM"/>
+    	<result property="userName" 	column="BOARD_TITLE"/>
+    	<result property="userPhone" column="BOARD_COMMENT"/>
+    	<result property="userAddr" 	column="BOARD_TYPE"/>
+    	<result property="userCompany" 	column="BOARD_NUM"/>
+   	</resultMap>
+    
+    
+</mapper>
