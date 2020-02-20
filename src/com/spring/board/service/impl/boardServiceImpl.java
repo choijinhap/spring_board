@@ -1,5 +1,6 @@
 package com.spring.board.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,12 +27,23 @@ public class boardServiceImpl implements boardService{
 	@Override
 	public List<BoardVo> SelectBoardList(PageVo pageVo) throws Exception {
 		// TODO Auto-generated method stub
+		List<ComcodeVo> comcodeList = new ArrayList<ComcodeVo>();
 		int page = 1;
-		String[] codeId= {"a01","a02","a03","a04"};
+		String codeType="menu";
+		String[] codeId;
+		
 		if(pageVo.getPageNo() < 1){
+			
 			pageVo.setPageNo(page);
 		}
 		if(pageVo.getcodeId()==null) {
+			comcodeList = boardDao.selectComcodeList(codeType);
+			codeId=new String[comcodeList.size()];
+			int i=0;
+			for(ComcodeVo comcode:comcodeList) {
+				codeId[i]=comcode.getcodeId();
+				i++;
+			}
 			pageVo.setcodeId(codeId);
 		}
 		return boardDao.selectBoardList(pageVo);

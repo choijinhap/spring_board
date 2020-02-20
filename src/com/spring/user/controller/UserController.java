@@ -1,6 +1,7 @@
 package com.spring.user.controller;
 
 import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -27,7 +28,64 @@ import com.spring.board.vo.BoardVo;
 import com.spring.board.vo.ComcodeVo;
 import com.spring.board.vo.PageVo;
 import com.spring.common.CommonUtil;
-
+import com.spring.user.service.UserService;
+import com.spring.user.vo.UserVo;
+import com.spring.common.CommonUtil;
+@Controller
 public class UserController {
-
+	
+	@Autowired
+	UserService userService;
+	@Autowired
+	boardService boardService;
+	
+	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	
+	@RequestMapping(value = "/user/userJoin.do", method = RequestMethod.GET)
+	public String userJoin(Locale locale, Model model) throws Exception{
+		
+		List<ComcodeVo> comcodeList = new ArrayList<ComcodeVo>();
+		String boardType="phone";
+		comcodeList = boardService.selectComcodeList(boardType);
+		model.addAttribute("comcodeList", comcodeList);
+		
+		return "/user/userJoin";
+	}
+	
+	@RequestMapping(value = "/user/userJoinAction.do", method = RequestMethod.POST)
+	@ResponseBody
+	public String userJoinAction(Locale locale, UserVo userVo) throws Exception{
+		
+		HashMap<String, String> result = new HashMap<String, String>();
+		CommonUtil commonUtil = new CommonUtil();
+		
+		int resultCnt = userService.userInsert(userVo);
+		
+		result.put("success", (resultCnt > 0)?"Y":"N");
+		result.put("pageNo", "1");
+		
+		String callbackMsg = commonUtil.getJsonCallBackString(" ",result);
+		
+		System.out.println("callbackMsg::"+callbackMsg);
+		
+		return callbackMsg;
+	}
+	
+	@RequestMapping(value = "/user/userIdCheck.do", method = RequestMethod.POST)
+	@ResponseBody
+	public String userIdCheck(Locale locale, UserVo userVo) throws Exception{
+		HashMap<String, String> result = new HashMap<String, String>();
+		CommonUtil commonUtil = new CommonUtil();
+		String userId=userVo.getUserId();
+		
+		int resultCnt = userService.userIdCheck(userId);
+		
+		result.put("duplicated", (resultCnt > 0)?"0":"1");
+		
+		String callbackMsg = commonUtil.getJsonCallBackString(" ",result);
+		
+		System.out.println("callbackMsg::"+callbackMsg);
+		
+		return callbackMsg;
+	}
 }

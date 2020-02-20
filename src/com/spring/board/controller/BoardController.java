@@ -165,8 +165,7 @@ public class BoardController {
 		
 		int resultCnt=boardService.boardUpdate(boardVo);
 		
-		result.put("success", (resultCnt > 0)?"Y":"N");
-		result.put("pageNo", "1");
+		result.put("success", (resultCnt > 0)?"0":"1");
 		
 		String callbackMsg = commonUtil.getJsonCallBackString(" ",result);
 		

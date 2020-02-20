@@ -10,10 +10,6 @@ public class UserVo {
 	private String userAddr1;
 	private String userAddr2;
 	private String userCompany;
-	private String creator;
-	private String createTime;
-	private String modifier;
-	private String modiferTime;
 	public String getUserId() {
 		return userId;
 	}
@@ -67,30 +63,6 @@ public class UserVo {
 	}
 	public void setUserCompany(String userCompany) {
 		this.userCompany = userCompany;
-	}
-	public String getCreator() {
-		return creator;
-	}
-	public void setCreator(String creator) {
-		this.creator = creator;
-	}
-	public String getCreateTime() {
-		return createTime;
-	}
-	public void setCreateTime(String createTime) {
-		this.createTime = createTime;
-	}
-	public String getModifier() {
-		return modifier;
-	}
-	public void setModifier(String modifier) {
-		this.modifier = modifier;
-	}
-	public String getModiferTime() {
-		return modiferTime;
-	}
-	public void setModiferTime(String modiferTime) {
-		this.modiferTime = modiferTime;
 	}
 	
 }
