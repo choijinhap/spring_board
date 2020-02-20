@@ -88,4 +88,10 @@ public class UserController {
 		
 		return callbackMsg;
 	}
+	
+	@RequestMapping(value = "/user/userLogin.do", method = RequestMethod.GET)
+	public String userLogin(Locale locale, Model model) throws Exception{
+		
+		return "/user/userLogin";
+	}
 }
