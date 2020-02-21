@@ -62,7 +62,6 @@ public class UserController {
 		int resultCnt = userService.userInsert(userVo);
 		
 		result.put("success", (resultCnt > 0)?"Y":"N");
-		result.put("pageNo", "1");
 		
 		String callbackMsg = commonUtil.getJsonCallBackString(" ",result);
 		
@@ -81,6 +80,23 @@ public class UserController {
 		int resultCnt = userService.userIdCheck(userId);
 		
 		result.put("duplicated", (resultCnt > 0)?"0":"1");
+		
+		String callbackMsg = commonUtil.getJsonCallBackString(" ",result);
+		
+		System.out.println("callbackMsg::"+callbackMsg);
+		
+		return callbackMsg;
+	}
+	
+	@RequestMapping(value = "/user/userPwCheck.do", method = RequestMethod.POST)
+	@ResponseBody
+	public String userPwCheck(Locale locale, UserVo userVo) throws Exception{
+		HashMap<String, String> result = new HashMap<String, String>();
+		CommonUtil commonUtil = new CommonUtil();
+		
+		int resultCnt = userService.userPwCheck(userVo);
+		
+		result.put("success", (resultCnt > 0)?"1":"0");
 		
 		String callbackMsg = commonUtil.getJsonCallBackString(" ",result);
 		

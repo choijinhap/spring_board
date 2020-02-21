@@ -8,7 +8,70 @@
 <title>login</title>
 </head>
 <script type="text/javascript">
+	$j(document).ready(function() {
+		$j("#submit").on("click",function() {
+			if(formIdCheck()&&formPwCheck()){
+				location.href="/board/boardList.do";
+			}
+		});
+	
+	});
+	
+	function formIdCheck() {
+		var id = $j("#userId");
+		var param = id.serialize();
+		var r="";
+		$j.ajax({
+			url : "/user/userIdCheck.do",
+			dataType : "json",
+			type : "POST",
+			data : param,
+			async :false,
+			success : function(data, textStatus, jqXHR) {
+				if (data.duplicated == 0) {
+					r=true;
+				} else {
+					alert("없는 ID 입니다.");
+					r=false;
+				}
 
+			},
+			error : function(jqXHR, textStatus, errorThrown) {
+				alert("실패");
+				r=false;
+			}
+		});
+		return r;
+
+	}
+	function formPwCheck() {
+		var $frm = $j(':input');
+		var param = $frm.serialize();
+		alert(param);
+		var r="";
+		$j.ajax({
+			url : "/user/userPwCheck.do",
+			dataType : "json",
+			type : "POST",
+			data : param,
+			async :false,
+			success : function(data, textStatus, jqXHR) {
+				if (data.success == 1) {
+					r=true;
+				} else {
+					alert("일치하는 id pw가 없습니다");
+					r=false;
+				}
+
+			},
+			error : function(jqXHR, textStatus, errorThrown) {
+				alert("실패");
+				r=false;
+			}
+		});
+		return r;
+
+	}
 </script>
 <body>
 	<form class="userLogin" name="login" method="post">

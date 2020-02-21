@@ -23,4 +23,10 @@ public class UserServiceImpl implements UserService{
 		// TODO Auto-generated method stub
 		return userDao.userIdCheck(userId);
 	}
+
+	@Override
+	public int userPwCheck(UserVo userVo) throws Exception {
+		// TODO Auto-generated method stub
+		return userDao.userPwCheck(userVo);
+	}
 }

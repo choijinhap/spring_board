@@ -8,4 +8,6 @@ public interface UserDao {
 
 	int userIdCheck(String userId) throws Exception;
 
+	int userPwCheck(UserVo userVo) throws Exception;
+
 }

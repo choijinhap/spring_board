@@ -22,4 +22,9 @@ public class UserDaoImpl implements UserDao{
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("user.userIdCheck",userId);
 	}
+	@Override
+	public int userPwCheck(UserVo userVo) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("user.userPwCheck",userVo);
+	}
 }

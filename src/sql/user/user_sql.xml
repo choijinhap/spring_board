@@ -53,4 +53,11 @@
     	FROM USER_INFO
     	WHERE USER_ID=#{userId}
     </select>
+    
+     <select id="userPwCheck" parameterType="com.spring.user.vo.UserVo" resultType="int">
+    	SELECT COUNT(*)
+    	FROM USER_INFO
+    	WHERE USER_ID=#{userId}
+    	AND USER_PW=#{userPw}
+    </select>
 </mapper>

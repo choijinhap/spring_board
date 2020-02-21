@@ -8,43 +8,30 @@
 <title>join</title>
 </head>
 <script type="text/javascript">
-	$j(document)
-			.ready(
-					function() {
-
-						$j("#submit")
-								.on(
-										"click",
-										function() {
-											if (formIdCheck() && formPwCheck()
-													&& formNameCheck()
-													&& formPhoneCheck()
-													&& formPostNoCheck()) {
-												var $frm = $j('.userJoin :input');
-												var param = $frm.serialize();
-												$j
-														.ajax({
-															url : "/user/userJoinAction.do",
-															dataType : "json",
-															type : "POST",
-															data : param,
-															success : function(
-																	data,
-																	textStatus,
-																	jqXHR) {
-																location.href = "/board/boardList.do";
-															},
-															error : function(
-																	jqXHR,
-																	textStatus,
-																	errorThrown) {
-																alert("실패");
-															}
-														});
-											}
-										});
-
+	$j(document).ready(function() {
+			$j("#submit").on("click",function() {
+				if (formIdCheck() && formPwCheck()
+					&& formNameCheck()
+					&& formPhoneCheck()
+					&& formPostNoCheck()) {
+				var $frm = $j('.userJoin :input');
+				var param = $frm.serialize();
+				$j.ajax({
+					url : "/user/userJoinAction.do",
+					dataType : "json",
+					type : "POST",
+					data : param,
+					success : function(data,textStatus,jqXHR) {
+						location.href = "/board/boardList.do";
+						},
+					error : function(jqXHR,textStatus,errorThrown) {
+						alert("실패");
+						}
 					});
+				}
+			});
+
+		});
 
 	function idCheck() {
 		var id = $j("#userId");
@@ -133,15 +120,12 @@
 			return true;
 	}
 	function inputPostNo(postNo) {
-		// replace 함수를 사용하여 콜론( : )을 공백으로 치환한다.
 		var replacePostNo = postNo.value.replace("-", "");
 
-		// 텍스트박스의 입력값이 4~5글자 사이가 되는 경우에만 실행한다.
 		if (replacePostNo.length >= 6 && replacePostNo.length < 7) {
 			var pre = replacePostNo.substring(0, 3);
 			var post = replacePostNo.substring(3, 6);
 
-			// isFinite함수를 사용하여 문자가 선언되었는지 확인한다.
 			if (isFinite(pre + post) == false) {
 				alert("문자는 입력하실 수 없습니다.");
 				postNo.value = "";
