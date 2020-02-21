@@ -146,18 +146,6 @@
 			return false;
 		}
 	}
-	function press_nohan(obj){
-		obj.value=obj.value.replace(/[\ㄱ-ㅎㅏ-ㅣ가-힣]/g,"");
-	}
-	function press_nonum(obj){
-		obj.value=obj.value.replace(/[\0-9]/g,"");
-		obj.value=obj.value.replace(/[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\\]/gi,"");
-	}
-	function press_num(obj){
-		press_nohan(obj);
-		obj.value=obj.value.replace(/[\a-z]/g,"");
-		obj.value=obj.value.replace(/[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\\]/gi,"");
-	}
 </script>
 <body>
 	<input type="hidden" id="ckFlag" value="0">
@@ -172,7 +160,7 @@
 		<table border="1" align="center">
 			<tr>
 				<td>id</td>
-				<td><input type="text" size="20" name="userId" id="userId" onkeyup="press_nohan(this);"><input
+				<td><input type="text" size="20" name="userId" id="userId" "><input
 					type="button" id="idCk" name="idCk" value="중복확인"
 					onclick="javascript:idCheck()" ></td>
 
@@ -189,7 +177,7 @@
 			</tr>
 			<tr>
 				<td>name</td>
-				<td><input type="text" size="20" maxlength="10" name="userName" onkeyup="press_nonum(this);"
+				<td><input type="text" size="20" maxlength="10" name="userName"
 					id="userName"></td>
 			</tr>
 			<tr>
@@ -198,8 +186,8 @@
 						<c:forEach items="${comcodeList}" var="list">
 							<option value="${list.codeId}">${list.codeName}</option>
 						</c:forEach>
-				</select> <input type="text" size="4" maxlength="4" name="userPhone2" onkeyup="press_num(this);"
-					id="userPhone2"> <input type="text" size="4" maxlength="4" onkeyup="press_num(this);"
+				</select> <input type="text" size="4" maxlength="4" name="userPhone2"
+					id="userPhone2"> <input type="text" size="4" maxlength="4"
 					name="userPhone3" id="userPhone3"></td>
 			</tr>
 			<tr>

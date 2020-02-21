@@ -27,4 +27,9 @@ public class UserDaoImpl implements UserDao{
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("user.userPwCheck",userVo);
 	}
+	@Override
+	public UserVo userLogin(UserVo userVo) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("user.userLogin",userVo);
+	}
 }

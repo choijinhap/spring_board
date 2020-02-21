@@ -27,23 +27,29 @@ import com.spring.board.vo.BoardVo;
 import com.spring.board.vo.ComcodeVo;
 import com.spring.board.vo.PageVo;
 import com.spring.common.CommonUtil;
+import com.spring.user.service.UserService;
+import com.spring.user.vo.UserVo;
 
 @Controller
 public class BoardController {
 	
 	@Autowired 
 	boardService boardService;
+	@Autowired
+	UserService userService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	@RequestMapping(value = "/board/boardList.do", method = RequestMethod.GET)
-	public String boardList(Locale locale, Model model,PageVo pageVo) throws Exception{
+	public String boardList(Locale locale, Model model,PageVo pageVo,UserVo userVo) throws Exception{
 		
 		List<ComcodeVo> comcodeList = new ArrayList<ComcodeVo>();
 		String codeType="menu";
 		comcodeList = boardService.selectComcodeList(codeType);
 		
+	//	UserVo myUserVo=userService.userLogin(userVo);
 		
+	//	model.addAttribute("user", myUserVo);
 		model.addAttribute("comcodeList", comcodeList);
 		
 		return "board/boardList";

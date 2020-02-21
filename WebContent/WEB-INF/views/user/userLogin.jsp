@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/views/common/common.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>login</title>
 </head>
 <script type="text/javascript">
@@ -31,13 +31,13 @@
 				if (data.duplicated == 0) {
 					r=true;
 				} else {
-					alert("¾ø´Â ID ÀÔ´Ï´Ù.");
+					alert("ì—†ëŠ” ID ì…ë‹ˆë‹¤.");
 					r=false;
 				}
 
 			},
 			error : function(jqXHR, textStatus, errorThrown) {
-				alert("½ÇÆĞ");
+				alert("ì‹¤íŒ¨");
 				r=false;
 			}
 		});
@@ -47,7 +47,6 @@
 	function formPwCheck() {
 		var $frm = $j(':input');
 		var param = $frm.serialize();
-		alert(param);
 		var r="";
 		$j.ajax({
 			url : "/user/userPwCheck.do",
@@ -59,13 +58,13 @@
 				if (data.success == 1) {
 					r=true;
 				} else {
-					alert("ÀÏÄ¡ÇÏ´Â id pw°¡ ¾ø½À´Ï´Ù");
+					alert("ì¼ì¹˜í•˜ëŠ” id pwê°€ ì—†ìŠµë‹ˆë‹¤");
 					r=false;
 				}
 
 			},
 			error : function(jqXHR, textStatus, errorThrown) {
-				alert("½ÇÆĞ");
+				alert("ì‹¤íŒ¨");
 				r=false;
 			}
 		});

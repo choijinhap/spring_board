@@ -10,4 +10,6 @@ public interface UserDao {
 
 	int userPwCheck(UserVo userVo) throws Exception;
 
+	UserVo userLogin(UserVo userVo) throws Exception;
+
 }

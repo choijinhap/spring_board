@@ -76,7 +76,7 @@
 	}
 	
 	function getPage(count){
-		var pageNum=parseInt(count/10)+1;
+		var pageNum=parseInt((count-1)/10)+1;
 		var html="";
 		for(var i=1; i<=pageNum; i++){
 			html+="<a href='javascript:goPage("+i+")'>"+i +"</a>&nbsp";

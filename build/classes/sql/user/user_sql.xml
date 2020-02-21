@@ -60,4 +60,10 @@
     	WHERE USER_ID=#{userId}
     	AND USER_PW=#{userPw}
     </select>
+    
+    <select id="userLogin" parameterType="com.spring.user.vo.UserVo" resultType="int">
+    	SELECT *
+    	FROM USER_INFO
+    	WHERE USER_ID=#{userId}
+    </select>
 </mapper>

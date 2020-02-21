@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/views/common/common.jsp"%>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>boardView</title>
 </head>
 <script type="text/javascript">
@@ -13,7 +13,7 @@
 		
 		$j(".delete").on("click",function(){
 			
-			if(confirm("»èÁ¦ÇÏ½Ã°Ú½À´Ï±î?")){
+			if(confirm("ì‚­ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?")){
 				$j.ajax({
 				    url : "/board/${boardType }/${boardNum }/boardDeleteAction.do",
 				    dataType: "json",
@@ -25,7 +25,7 @@
 				    },
 				    error: function (jqXHR, textStatus, errorThrown)
 				    {
-				    	alert("½ÇÆÐ");
+				    	alert("ì‹¤íŒ¨");
 				    }
 				});
 			}
@@ -68,8 +68,8 @@
 	<tr>
 		<td align="right">
 			<a href="/board/boardList.do">List</a>
-			<a class="delete" href="#">»èÁ¦</a>
-			<a href="/board/${boardType}/${boardNum }/boardUpdate.do">¼öÁ¤</a>
+			<a class="delete" href="#">ì‚­ì œ</a>
+			<a href="/board/${boardType}/${boardNum }/boardUpdate.do">ìˆ˜ì •</a>
 		</td>
 		
 		
