@@ -69,8 +69,10 @@
 	<tr>
 		<td align="right">
 			<a href="/board/boardList.do">List</a>
+			<c:if test="${sessionScope.userName == board.creator}"> 
 			<a class="delete" href="#">삭제</a>
 			<a href="/board/${boardType}/${boardNum }/boardUpdate.do">수정</a>
+			</c:if>
 		</td>
 		
 		

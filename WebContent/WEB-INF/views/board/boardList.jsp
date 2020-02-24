@@ -135,11 +135,6 @@
 			<a href ="/user/logout.do">로그아웃</a>
 		</td>
 		</c:when>
-		<c:otherwise>
-		<td align="left">
-			<a href ="/board/boardWrite.do">글쓰기</a>
-		</td>
-		</c:otherwise>
 	</c:choose>
 	</tr>
 </table>

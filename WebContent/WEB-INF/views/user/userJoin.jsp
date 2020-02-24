@@ -21,12 +21,13 @@
 					dataType : "json",
 					type : "POST",
 					data : param,
+					async :false,
 					success : function(data,textStatus,jqXHR) {
-						$j("#userJoin").attr("action", "/board/boardList.do");
-						$j("#userJoin").submit();
+						location.href="/board/boardList.do";
 						},
 					error : function(jqXHR,textStatus,errorThrown) {
 						alert("실패");
+						return false;
 						}
 					});
 				}
