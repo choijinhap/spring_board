@@ -77,6 +77,7 @@
 						Writer
 						</td>
 						<td>
+						<input name="creator" type="text" size="50" value="${sessionScope.userName}" readonly> 
 						</td>
 					</tr>
 				</table>

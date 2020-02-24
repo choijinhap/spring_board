@@ -60,6 +60,7 @@
 					Writer
 					</td>
 					<td>
+					${board.creator}
 					</td>
 				</tr>
 			</table>

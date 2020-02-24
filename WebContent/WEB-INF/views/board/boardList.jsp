@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="EUC-KR"%>
 <%@include file="/WEB-INF/views/common/common.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>list</title>
 </head>
 <script type="text/javascript">
@@ -101,10 +101,17 @@
 <body>
 <table id=toptap align="center" >
 	<tr align="left">
+	<c:choose>
+		<c:when test= "${sessionScope.login eq 'success'}">
+			<td> ${sessionScope.userName}</td> 
+		</c:when>
+		<c:otherwise>
 		<td align="left">
 			<a href ="/user/userLogin.do">Login</a>
 			<a href ="/user/userJoin.do">Join</a>
 		</td>
+		</c:otherwise>
+	</c:choose>
 	</tr>
 </table> 
 <table id="testTable" align="center">
@@ -120,9 +127,20 @@
 			</c:forEach>
 			<input type="button" id="checkSearch" value="적용">
 		</td>
-		<td align="right">
+		
+		<c:choose>
+		<c:when test= "${sessionScope.login eq 'success'}">
+			<td align="right">
+			<a href ="/board/boardWrite.do">글쓰기</a>
+			<a href ="/user/logout.do">로그아웃</a>
+		</td>
+		</c:when>
+		<c:otherwise>
+		<td align="left">
 			<a href ="/board/boardWrite.do">글쓰기</a>
 		</td>
+		</c:otherwise>
+	</c:choose>
 	</tr>
 </table>
 <div id="pagingTab" align="center">

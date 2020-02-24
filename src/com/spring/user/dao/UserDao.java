@@ -12,4 +12,6 @@ public interface UserDao {
 
 	UserVo userLogin(UserVo userVo) throws Exception;
 
+	boolean loginCheck(UserVo userVo)throws Exception;
+
 }

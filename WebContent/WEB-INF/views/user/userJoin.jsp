@@ -22,7 +22,8 @@
 					type : "POST",
 					data : param,
 					success : function(data,textStatus,jqXHR) {
-						location.href = "/board/boardList.do";
+						$j("#userJoin").attr("action", "/board/boardList.do");
+						$j("#userJoin").submit();
 						},
 					error : function(jqXHR,textStatus,errorThrown) {
 						alert("실패");
@@ -162,7 +163,7 @@
 <body>
 	<input type="hidden" id="ckFlag" value="0">
 	<input type="hidden" id="ckId" value="!@#!@$!@$!@#!@$!@#!">
-	<form class="userJoin" name="join" method="post">
+	<form ID= "userJoin" class="userJoin" name="join" method="post">
 
 		<table align="center">
 			<tr>

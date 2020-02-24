@@ -9,10 +9,15 @@
 </head>
 <script type="text/javascript">
 	$j(document).ready(function() {
-		$j("#submit").on("click",function() {
+		$j("form").bind("submit",function() {
+		
 			if(formIdCheck()&&formPwCheck()){
-				location.href="/board/boardList.do";
+				return true;
+				//location.href="/board/boardList.do";
 			}
+			else{
+				return false;
+				}
 		});
 	
 	});
@@ -73,7 +78,7 @@
 	}
 </script>
 <body>
-	<form class="userLogin" name="login" method="post">
+	<form id="userLogin" class="userLogin" name="login" method="post" action="/user/loginCheck.do" >
 
 		<table border="1" align="center">
 			<tr>
@@ -86,7 +91,7 @@
 			</tr>
 			
 			<tr>
-				<td align="right"><input id="submit" type="button" value="login">
+				<td align="right"><input id="submit" type="submit" value="login">
 				</td>
 			</tr>
 		</table>

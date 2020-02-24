@@ -67,6 +67,7 @@
 						Writer
 						</td>
 						<td>
+						<input name="boardCreator" type="text" size="50" value="${board.creator}" readonly> 
 						</td>
 					</tr>
 				</table>

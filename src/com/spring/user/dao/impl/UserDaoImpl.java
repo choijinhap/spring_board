@@ -32,4 +32,10 @@ public class UserDaoImpl implements UserDao{
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("user.userLogin",userVo);
 	}
+	@Override
+	public boolean loginCheck(UserVo userVo) throws Exception {
+		// TODO Auto-generated method stub
+		String name = sqlSession.selectOne("user.loginCheck",userVo);
+		return (name==null)?false:true;
+	}
 }

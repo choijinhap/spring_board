@@ -1,5 +1,7 @@
 package com.spring.user.service.impl;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,5 +36,24 @@ public class UserServiceImpl implements UserService{
 	public UserVo userLogin(UserVo userVo) throws Exception {
 		// TODO Auto-generated method stub
 		return userDao.userLogin(userVo);
+	}
+
+	@Override
+	public boolean loginCheck(UserVo userVo, HttpSession session) throws Exception {
+		// TODO Auto-generated method stub
+		boolean result=userDao.loginCheck(userVo);
+		if(result) {
+			UserVo myUserVo=userLogin(userVo);
+			session.setAttribute("login", "success");
+			session.setAttribute("userId", myUserVo.getUserId());
+			session.setAttribute("userName", myUserVo.getUserName());
+		}
+		return result;
+	}
+
+	@Override
+	public void logout(HttpSession session) throws Exception {
+		// TODO Auto-generated method stub
+		session.invalidate();
 	}
 }

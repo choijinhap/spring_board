@@ -61,9 +61,17 @@
     	AND USER_PW=#{userPw}
     </select>
     
-    <select id="userLogin" parameterType="com.spring.user.vo.UserVo" resultType="int">
-    	SELECT *
+    <select id="userLogin" parameterType="com.spring.user.vo.UserVo" resultType="com.spring.user.vo.UserVo">
+    	SELECT USER_NAME as userName,
+    		USER_ID as userId
     	FROM USER_INFO
     	WHERE USER_ID=#{userId}
+    </select>
+    
+    <select id="loginCheck" parameterType="com.spring.user.vo.UserVo" resultType="string">
+    	SELECT USER_NAME
+		FROM USER_INFO
+		WHERE USER_ID=#{userId} AND USER_PW=#{userPw}
+    
     </select>
 </mapper>

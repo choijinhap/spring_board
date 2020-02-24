@@ -8,6 +8,9 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+import javax.swing.text.View;
+
 import org.codehaus.jackson.JsonProcessingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.slf4j.Logger;
@@ -110,4 +113,25 @@ public class UserController {
 		
 		return "/user/userLogin";
 	}
+	
+	@RequestMapping(value="/user/loginCheck.do" ,method = RequestMethod.POST)
+	public String loginCheck(UserVo userVo,HttpSession session,Model model)throws Exception {
+		boolean result=userService.loginCheck(userVo,session);
+		if(result==true) {
+			model.addAttribute("msg","success");
+			return "redirect:/board/boardList.do";
+		}else {
+			model.addAttribute("msg","failure");
+			return "user/userLogin";
+		}
+	}
+	
+	@RequestMapping(value="/user/logout.do")
+	public String logout(HttpSession session,Model model) throws Exception {
+		userService.logout(session);
+		model.addAttribute("msg","logout");
+		return "redirect:/board/boardList.do";
+	}
+	
+	
 }

@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.codehaus.jackson.JsonProcessingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.slf4j.Logger;
@@ -41,12 +43,11 @@ public class BoardController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	@RequestMapping(value = "/board/boardList.do", method = RequestMethod.GET)
-	public String boardList(Locale locale, Model model,PageVo pageVo,UserVo userVo) throws Exception{
-		
+	public String boardList(Locale locale, Model model,PageVo pageVo,UserVo userVo,HttpSession session) throws Exception{
+	//	return "board/boardList";
 		List<ComcodeVo> comcodeList = new ArrayList<ComcodeVo>();
 		String codeType="menu";
 		comcodeList = boardService.selectComcodeList(codeType);
-		
 	//	UserVo myUserVo=userService.userLogin(userVo);
 		
 	//	model.addAttribute("user", myUserVo);
